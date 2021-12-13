@@ -32,6 +32,14 @@ public class AddressBook_Service {
             statement.setInt(6, 109876);
             statement.setLong(7, 1234567890);
             statement.execute();
+            statement.setString(1, "RM");
+            statement.setString(2, "Jin");
+            statement.setString(3, "REQ");
+            statement.setString(4, "C");
+            statement.setString(5, "E");
+            statement.setInt(6, 129876);
+            statement.setLong(7, 1123467890);
+            statement.execute();
             boolean rowsInserted = statement.execute();
             if (rowsInserted) {
                 System.out.println("Row or data added successfully!!");
