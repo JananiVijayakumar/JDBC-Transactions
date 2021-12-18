@@ -36,30 +36,36 @@ public class AddressBookMain {
         return personDetails;
     }
 
-        public void displayAddressBook () {
-            for (AddressBook_Contact i : personDetails) {
-                System.out.println(i.toString());
-            }
-        }
-        public int updateLastName(String lastName, int zipCode){
-            String SqlUpdate = "UPDATE addressbook SET ZipCode = ? WHERE LastName = ?";
-            try {
-                preparedStatement = connection.prepareStatement(SqlUpdate);
-                preparedStatement.setInt(1,zipCode );
-                preparedStatement.setString(2,lastName );
-                preparedStatement.executeUpdate();
-                System.out.println("update successfully");
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-            String sqlRead = "SELECT * FROM addressbook";
-            executeQuery(sqlRead);
-            for (AddressBook_Contact addressBookContacts : personDetails) {
-                if (addressBookContacts.getFirstName().equals(lastName)) {
-                    return addressBookContacts.getZipCode();
-                }
-            }
-            return 0;
+    public void displayAddressBook() {
+        for (AddressBook_Contact i : personDetails) {
+            System.out.println(i.toString());
         }
     }
+
+    public int insertDate(int zipCode, String date) {
+        String SqlDateUpdate = "update addressbook set Date=? where ZipCode=?";
+        try {
+            preparedStatement = connection.prepareStatement(SqlDateUpdate);
+            preparedStatement.setDate(1, java.sql.Date.valueOf("2013-09-04"));
+            preparedStatement.setInt(2, 123456);
+            preparedStatement.executeUpdate();
+            preparedStatement.setDate(1, java.sql.Date.valueOf("2000-02-05"));
+            preparedStatement.setInt(2, 109876 );
+            preparedStatement.executeUpdate();
+            preparedStatement.setDate(1, java.sql.Date.valueOf("1996-12-30"));
+            preparedStatement.setInt(2, 123);
+            preparedStatement.executeUpdate();
+            System.out.println("Date update successfully");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        String sqlRead = "select * from addressbook where Date BETWEEN 1996-12-30 AND 2000-02-05;";
+        executeQuery(sqlRead);
+        for (AddressBook_Contact addressBookContacts : personDetails) {
+            {
+                return addressBookContacts.getZipCode();
+            }
+        }
+        return 0;
+    }
+}
