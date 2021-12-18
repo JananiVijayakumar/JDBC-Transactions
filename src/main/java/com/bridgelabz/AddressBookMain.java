@@ -59,7 +59,7 @@ public class AddressBookMain {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        String sqlRead = "select * from addressbook where Date BETWEEN 1996-12-30 AND 2000-02-05;";
+        String sqlRead = "select count(FirstName) from addressbook where City=A";
         executeQuery(sqlRead);
         for (AddressBook_Contact addressBookContacts : personDetails) {
             {
