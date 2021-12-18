@@ -52,8 +52,9 @@ public class AddressBookMain {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            String sqlSelect = "SELECT * FROM addressbook";
-            executeQuery(sqlSelect);
+
+            String sqlRead = "SELECT * FROM addressbook";
+            executeQuery(sqlRead);
             for (AddressBook_Contact addressBookContacts : personDetails) {
                 if (addressBookContacts.getFirstName().equals(lastName)) {
                     return addressBookContacts.getZipCode();
