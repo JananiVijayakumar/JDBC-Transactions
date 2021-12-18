@@ -59,7 +59,7 @@ public class AddressBookMain {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        String sqlRead = "select count(FirstName) from addressbook where City=A";
+        String sqlRead = "select count(FirstName) from addressbook where State=U";
         executeQuery(sqlRead);
         for (AddressBook_Contact addressBookContacts : personDetails) {
             {
